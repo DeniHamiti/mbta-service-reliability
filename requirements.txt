@@ -1,6 +1,6 @@
-   requests
-   pandas
-   sqlalchemy
-   psycopg2-binary
-   python-dotenv
-   pytest
+requests
+pandas
+sqlalchemy
+psycopg2-binary
+python-dotenv
+pytest
