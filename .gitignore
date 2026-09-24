@@ -1,0 +1,28 @@
+# Environment variables / secrets
+.env
+
+# Python virtual environments
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Data files (raw downloads, don't belong in git)
+data/raw/
+
+# Tableau extract cache
+*.twbx.tmp
+
+# IDE / editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
