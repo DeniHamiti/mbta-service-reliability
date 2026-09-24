@@ -64,3 +64,25 @@ def log_run_finish(engine, run_id: int, status: str, rows_loaded: int = None, er
             },
         )
     print(f"[pipeline_runs] finished run id={run_id} status={status} rows_loaded={rows_loaded}")
+
+
+def log_quality_issue(engine, check_name: str, table_name: str, issue_type: str,
+                       record_key: str = None, details: dict = None) -> None:
+    """Insert one row into staging.data_quality_issues."""
+    import json
+    with engine.begin() as conn:
+        conn.execute(
+            text("""
+                INSERT INTO staging.data_quality_issues
+                    (check_name, table_name, record_key, issue_type, details)
+                VALUES
+                    (:check_name, :table_name, :record_key, :issue_type, :details)
+            """),
+            {
+                "check_name": check_name,
+                "table_name": table_name,
+                "record_key": record_key,
+                "issue_type": issue_type,
+                "details": json.dumps(details) if details is not None else None,
+            },
+        )
